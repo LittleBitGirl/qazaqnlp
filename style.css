@@ -1,0 +1,31 @@
+.mainBlock{
+	display: inline-flex;
+	flex-direction: horizontal;
+}
+textarea{
+	margin: 2em 2em 0em 2em;
+}
+.inputWindow h3{
+	margin-left: 2em;
+	margin-top: 2em;	
+	margin-bottom: 0;
+}
+.outputWindow h3{
+	margin-left: 2em;
+	margin-top: 2em;
+	margin-bottom: 0;
+}
+#trigger{
+	width: 3em;
+	height: 3em;
+	background-image: url('package/build/svg/arrow-right.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+.icon-arrow{
+	
+}
