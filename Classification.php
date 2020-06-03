@@ -78,7 +78,7 @@ class Normalization{
 			$problemsList[] = 'mixed';
 	}
 	public function isNotWord($word){
-		if(ctype_alpha($word))
+		if(($word))
 			return false;
 		else
 			return true;
@@ -94,6 +94,7 @@ class Normalization{
 			}
 		}
 	}
+
 	public function hashOrMention($word){
 		global $problemsList;
 		if(strpos($word,'#') !== false)

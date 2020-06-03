@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -10,10 +11,10 @@
 		<link rel="icon" href="favicon.ico">
 		<title>Kazakh NLP</title>
 		<!-- Bootstrap core CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!-- Custom styles for this template -->
-		<link href="css/style.css" rel="stylesheet">
+		<link href="{% static 'css/style.css' %}" rel="stylesheet">
 	</head>
 	<body id="page-top">
 		<!-- Navigation -->
@@ -41,7 +42,8 @@
 						      <a class="dropdown-item" href="#">Tokenizer</a>
 						      <a class="dropdown-item" href="#">Normalizer</a>
 						      <a class="dropdown-item" href="#">Morphology</a>
-						  </li>
+                            </div>
+                        </li>
 						<li>
 							<a class="page-scroll" href="#">About us</a>
 						</li>
@@ -54,7 +56,7 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-		
+
 		<section id="portfolio">
 			<div class="container">
 			<div class="row">
@@ -100,15 +102,15 @@
 			</div><!-- container -->
 		</section>
 
-		
-		
+
+
 
 		<p id="back-top">
 			<a href="#top"><i class="fa fa-angle-up"></i></a>
 		</p>
 		<footer>
 			<div class="container text-center">
-				<p>Designed by Assina <span class="and-span">AND</span> Alina</a></p>
+				<p><a>Designed by Assina <span class="and-span">AND</span> Alina</a></p>
 			</div>
 		</footer>
 
@@ -121,7 +123,7 @@
 						<h4 class="modal-title" id="Modal-label-1">Dean & Letter</h4>
 					</div>
 					<div class="modal-body">
-						<img src="images/demo/portfolio-1.jpg" alt="img01" class="img-responsive" />
+						<img src="{% static 'images/demo/portfolio-1.jpg' %}" alt="img01" class="img-responsive" />
 						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
 						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
 					</div>
@@ -141,7 +143,7 @@
 						<h4 class="modal-title" id="Modal-label-2">Startup Framework</h4>
 					</div>
 					<div class="modal-body">
-						<img src="images/demo/portfolio-2.jpg" alt="img01" class="img-responsive" />
+						<img src="{% static 'images/demo/portfolio-2.jpg' %}" alt="img01" class="img-responsive" />
 						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
 						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
 					</div>
@@ -161,7 +163,7 @@
 						<h4 class="modal-title" id="Modal-label-3">Lamp & Velvet</h4>
 					</div>
 					<div class="modal-body">
-						<img src="images/demo/portfolio-3.jpg" alt="img01" class="img-responsive" />
+						<img src="{% static 'images/demo/portfolio-3.jpg' %}" alt="img01" class="img-responsive" />
 						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
 						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
 					</div>
@@ -181,7 +183,7 @@
 						<h4 class="modal-title" id="Modal-label-4">Smart Name</h4>
 					</div>
 					<div class="modal-body">
-						<img src="images/demo/portfolio-4.jpg" alt="img01" class="img-responsive" />
+						<img src="{% static 'images/demo/portfolio-4.jpg' %}" alt="img01" class="img-responsive" />
 						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
 						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
 					</div>
@@ -201,7 +203,7 @@
 						<h4 class="modal-title" id="Modal-label-5">Fast People</h4>
 					</div>
 					<div class="modal-body">
-						<img src="images/demo/portfolio-5.jpg" alt="img01" class="img-responsive" />
+						<img src="{% static 'images/demo/portfolio-5.jpg' %}" alt="img01" class="img-responsive" />
 						<div class="modal-works"><span>Branding</span><span>Web Design</span></div>
 						<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe</p>
 					</div>
@@ -216,9 +218,9 @@
 			================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/SmoothScroll.js"></script>
-		<script src="js/theme-scripts.js"></script>
+		<script src="{% static '/js/bootstrap.min.js' %}"></script>
+		<script src="{% static '/js/SmoothScroll.js' %}"></script>
+		<script src="{% static '/js/theme-scripts.js' %}"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$(".col-0-gutter").on("click","figure", function(){
@@ -228,7 +230,7 @@
 					$(this).find("figcaption").addClass("active");
 				})
 			})
-			
+
 		</script>
 	</body>
 </html>
