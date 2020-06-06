@@ -1,7 +1,8 @@
 import os
 import sys
 
-from django.http import JsonResponse, HttpResponse, request
+import json
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from django.views import View
@@ -22,9 +23,9 @@ from .bayessian_normalizer import normalize as nb_normalizer
 
 @api_view(['POST'])
 def normalize(request, format=None):
-    response = nb_normalizer(request.text)
+    response = nb_normalizer(request.data['text'])
     if (response != None):
-        return JsonResponse(response)
+        return HttpResponse(json.dumps(response), content_type='application/json')
     else:
         return Response(status=500)
 

@@ -19,7 +19,7 @@ from django.urls import path
 from .normalizer import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    # path('normalize/', views.normalize, name=None),
+    path('normalize/', views.normalize, name=None),
     path('', views.index, name='index')
 ]
 

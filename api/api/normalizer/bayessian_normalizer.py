@@ -5,15 +5,20 @@ import array
 import re, sys
 import codecs, string
 
+
 def words(text): return re.findall(r'\w+', text.lower())
+
+
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 WORDS = Counter(
     words(
-        codecs.open(THIS_FOLDER+'/library/all_words.txt', 'r', 'utf_8').read().translate(str.maketrans('', '', string.punctuation))
-        + codecs.open(THIS_FOLDER+'/library/ocr.txt', 'r', 'utf_8').read().translate(str.maketrans('', '', string.punctuation))
-        + codecs.open(THIS_FOLDER+'/library/abay_joli_1_full.txt', 'r', 'utf_8').read().translate(
+        codecs.open(THIS_FOLDER + '/library/all_words.txt', 'r', 'utf_8').read().translate(
             str.maketrans('', '', string.punctuation))
-        + codecs.open(THIS_FOLDER+'/library/bir_ata_bala_full.txt', 'r', 'utf_8').read().translate(
+        + codecs.open(THIS_FOLDER + '/library/ocr.txt', 'r', 'utf_8').read().translate(
+            str.maketrans('', '', string.punctuation))
+        + codecs.open(THIS_FOLDER + '/library/abay_joli_1_full.txt', 'r', 'utf_8').read().translate(
+            str.maketrans('', '', string.punctuation))
+        + codecs.open(THIS_FOLDER + '/library/bir_ata_bala_full.txt', 'r', 'utf_8').read().translate(
             str.maketrans('', '', string.punctuation))
     )
 )
@@ -113,16 +118,18 @@ def normalize(text):
     overall_accuracy = 0
     count = 0
     corrected_count = 0
+    text_res = ''
     for word in wordsArray:
         corrected = correction(word)
         accuracy = getAccuracy(word, corrected)
         count += 1
         overall_accuracy += accuracy
+        text_res += ' ' + corrected
         if (corrected != word):
             normalizedArray.append({
                 "word": word,
                 "corrected": corrected,
-                "LD/length": accuracy
+                "LD/length": round(accuracy, 2)
             })
             corrected_count += 1
         else:
@@ -131,8 +138,9 @@ def normalize(text):
             })
 
     return {
+        "text_res": text_res,
         "normalized_array": normalizedArray,
-        "average_accuracy": overall_accuracy / count,
+        "average_accuracy": round(overall_accuracy / count, 2),
         "num_of_word": count,
         "num_of_corrected": corrected_count
     }

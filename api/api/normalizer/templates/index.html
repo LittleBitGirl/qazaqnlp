@@ -72,24 +72,25 @@
 				<div class="col-md-6 col-0-gutter">
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
-							<textarea class="inp-text" rows="19" cols="70">
-							</textarea>
-							<figcaption>
-								<h2>Tokenizer</h2>
-								<p>Input Text</p>
-								<!-- <a href="#" data-toggle="modal" data-target="#Modal-1">View more</a> -->
-							</figcaption>
+                            <form id="inp-form">
+                                <textarea name="text" class="inp-text" rows="19" cols="70"></textarea>
+                                <input type="submit" class="submit-btn" value="Normalize"/>
+                            </form>
+                            <figcaption>
+                                <h2>Normalizer</h2>
+                                <p>Input Text</p>
+                                <!-- <a href="#" data-toggle="modal" data-target="#Modal-1">View more</a> -->
+                            </figcaption>
 						</figure>
 					</div>
 				</div>
-				<!-- end portfolio item -->
-				<!-- start portfolio item -->
-				<div class="col-md-6 col-0-gutter">
+				<div class="col-md-6 col-0-gutter" id="output">
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
-							<textarea class="inp-text" rows="19" cols="70" readonly="true"></textarea>
+							<textarea class="inp-text" id="out-text" rows="19" cols="70"></textarea>
+                            <input type="button" onclick="copyToClipboard()" class="submit-btn" value="Copy">
 							<figcaption>
-								<h2>Tokenized</h2>
+								<h2>Normalized</h2>
 								<p>Output Text</p>
 								<!-- <a href="#" data-toggle="modal" data-target="#Modal-2">View more</a> -->
 							</figcaption>
@@ -223,14 +224,42 @@
 		<script src="{% static '/js/theme-scripts.js' %}"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
+                $(this).find(".submit-btn").hide();
 				$(".col-0-gutter").on("click","figure", function(){
 					$(this).find("figcaption").css("display", "none");
+					$(this).find(".submit-btn").show();
 					$(this).find("figcaption").siblings(".active").css("display", "block");
 					$(this).find("figcaption").siblings(".active").removeClass("active");
 					$(this).find("figcaption").addClass("active");
-				})
-			})
+				});
+                $(".submit-btn").on('click', function(e) {
+                    e.preventDefault();
+                    datas = {'text': $("#inp-form").find('textarea').val()};
+                    $.ajax({
+                        "type": "POST",
+                        "url": "normalize/",
+                        "data": datas,
+                        "success": function(result) {
+                            $("#output").find("figcaption").css("display", "none");
+                            console.log(typeof (result.normalized_array));
+                            $("#out-text").val(
+                                "Normalized string: " + result.text_res + "\n" +
+                                "Info: " + JSON.stringify(result.normalized_array) + "\n" +
+                                "Average accuracy: " + result.average_accuracy + "\n" +
+                                "Number of words: " + result.num_of_word + "\n" +
+                                "Number of corrected words: " + result.num_of_corrected
+                            );
+                        },
+                    });
+                });
+			});
 
+            function copyToClipboard() {
+                  var copyText = document.getElementById("out-text");
+                  copyText.select();
+                  copyText.setSelectionRange(0, 99999);
+                  document.execCommand("copy");
+            }
 		</script>
 	</body>
 </html>
