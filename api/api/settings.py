@@ -24,7 +24,7 @@ SECRET_KEY = ')jh8=y(nifnk+r&kbug@jni_!z#9ue^a(io$!t5!8s_bnd_gq('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['antresolle.kz', 'localhost', '127.0.0.1', '192.58.103.124']
 
 # Application definition
 
