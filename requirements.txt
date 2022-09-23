@@ -41,7 +41,7 @@ numpy==1.18.1
 pandas==1.0.1
 pandocfilters==1.4.2
 parso==0.6.1
-protobuf==3.9.1
+protobuf==3.18.3
 psycopg2==2.8.4
 Pygments==2.5.2
 python-dateutil==2.8.1
